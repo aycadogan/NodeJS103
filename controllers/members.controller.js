@@ -23,7 +23,7 @@ exports.createMember = (req,res) => {
         status: 'active'
     }
     members.push(newMember)
-    res.redirect('/api/members')
+    res.redirect('/')
 }
 
 exports.updateMember = (req,res) => {

@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const path = require('path')
 
 const memberRoute = require('./routes/routes')
+const members = require('./models/members')
+
 
 const app = express()
 app.set('view engine', 'ejs')
@@ -13,7 +15,15 @@ app.use(bodyParser.json())
 
 app.use(express.static(path.join(__dirname,'public')))
 
+app.get('/', (req,res) => {
+    res.render('index',{
+        title: 'EJS', members
+    })
+})
+
 app.use('/api/members',memberRoute)
+
+
 
 app.use((req,res) => {
     res.status(404).send('<h1>Error 404</h1>')
